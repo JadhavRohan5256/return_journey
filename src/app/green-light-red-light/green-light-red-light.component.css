@@ -1,4 +1,3 @@
-
 .score-dashboard {
     display: flex;
     flex-direction: column;
@@ -120,7 +119,7 @@
 }
 
 .click #Right {
-    Left: 250px;
+    left: 250px;
     transition: transform 0.25s ease-in-out;
 }
 
@@ -167,7 +166,6 @@
     }
 }
 
-
 .btn-wrapper {
     display: flex;
     flex-direction: column;
@@ -190,9 +188,8 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+    user-select: none;
 }
-
-
 
 /* Info Wrapper Csss */
 .cover {
@@ -204,7 +201,6 @@
     background-color: rgba(255, 255, 255, 0.05);
     z-index: 10;
 }
-
 
 .info-wrapper {
     width: 500px;
@@ -249,17 +245,6 @@
     padding: 2rem;
 }
 
-/* .info::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: -10px;
-    width: 3px;
-    height: calc(100% - 20px);
-    border-radius: 1.5px;
-    background-color: var(--success-color);
-} */
-
 .info-box {
     display: flex;
     flex-direction: column;
@@ -289,16 +274,16 @@
     font-weight: 300;
 }
 
-
-
 .radio-wrapper {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .radio {
-    width: 30%;
+    width: 120px;
     height: 2rem;
+    flex: 1 0 120px;
 }
 
 .radio label {
@@ -368,4 +353,77 @@ label.error,
     font-family: var(--rubik);
     font-weight: 400;
     color: var(--error-color);
+}
+
+
+@media only screen and (max-width: 550px) {
+    .box, .side {
+        width: 160px;
+        height: 160px;
+    }
+
+    #Front {
+        transform: translateZ(80px);
+    }
+
+    #Back {
+        transform: translateZ(-80px);
+    }
+
+    #Top {
+        bottom: 80px;
+    }
+
+    #Bottom {
+        top: 80px;
+    }
+
+    #Left {
+        right: 80px;
+    }
+
+    #Right {
+        left: 80px;
+    }
+
+    .click #Front {
+        transform: translateZ(150px) rotateY(360deg);
+        transition: transform 0.25s ease-in-out;
+    }
+    
+    .click #Back {
+        transform: translateZ(-150px) rotateY(360deg);
+        transition: transform 0.25s ease-in-out;
+    }
+    
+    .click #Left {
+        right: 150px;
+        transition: transform 0.25s ease-in-out;
+    }
+    
+    .click #Right {
+        left: 150px;
+        transition: transform 0.25s ease-in-out;
+    }
+    
+    .click #Top {
+        bottom: 150px;
+        transition: transform 0.25s ease-in-out;
+    }
+    
+    .click #Bottom {
+        top: 150px;
+        transition: transform 0.25s ease-in-out;
+    }
+ 
+    .info-wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .radio-wrapper {
+        flex-wrap: wrap;
+    }
 }
