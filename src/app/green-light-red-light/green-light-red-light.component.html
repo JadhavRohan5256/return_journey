@@ -1,0 +1,159 @@
+<div class="score-dashboard" *ngIf="isSubmittedInfo">
+    <div class="wrapper">
+        <h3>Your Score: {{score}}</h3>
+        <h3>Remaining Time: {{time}}s</h3>
+    </div>
+</div>
+
+<div 
+    class="box-container" 
+    [ngClass]="{'change-color': isChangedColor}" 
+    *ngIf="isSubmittedInfo">
+    <div class="box" (click) = "onBoxClick()" [ngClass]="isClicked ? 'click': ''">
+      <p class="side" id="Front">front </p>
+      <p class="side" id="Back">back </p>
+      <p class="side" id="Left">left </p>
+      <p class="side" id="Top">top</p>
+      <p class="side" id="Right">right </p>
+      <p class="side" id="Bottom">bottom</p>
+    </div>
+</div>
+
+
+<div class="cover" *ngIf="isOpenInfo" (click)="onCloseInfo()">
+</div>
+
+<div class="info-wrapper" [formGroup]="InfoGroup" *ngIf="isOpenInfo">
+    <div class="close-icons" (click)="onCloseInfo()">
+        <p></p>
+        <p></p>
+    </div>
+    <div class="info">
+        <div class="info-box">
+            <label 
+                for="full_name" 
+                [ngClass]="isErrors('full_name')">
+                Full Name: 
+            </label>
+            <input 
+                type="text" 
+                name="full_name" 
+                id="full_name" 
+                autocomplete="off"
+                formControlName="full_name"
+                />
+                <small 
+                *ngIf="InfoGroup.get('full_name')?.errors?.['required'] && InfoGroup.get('full_name')?.touched" 
+                class="error">
+                full name is required
+            </small>
+        </div>
+        <div class="info-box">
+            <label 
+                for="email" 
+                [ngClass]="isErrors('email')">
+                Email: 
+            </label>
+            <input 
+                type="text" 
+                name="email" 
+                id="email" 
+                autocomplete="off"
+                formControlName="email"
+            />
+            <small 
+                *ngIf="InfoGroup.get('email')?.errors?.['required'] && InfoGroup.get('email')?.touched" 
+                class="error">
+                Email is required
+            </small>
+            <small 
+                *ngIf="InfoGroup.get('email')?.errors?.['email'] && InfoGroup.get('email')?.touched" 
+                class="error">
+                Invalid email
+            </small>
+        </div>
+        <div class="info-box">
+            <label 
+                for="mobile_number" 
+                [ngClass]="isErrors('mobile_number')">
+                Mobile Number: 
+            </label>
+            <input 
+                type="text" 
+                name="mobile_number" 
+                id="mobile_number" 
+                autocomplete="off"
+                formControlName="mobile_number"
+            /> 
+            <small 
+                *ngIf="InfoGroup.get('mobile_number')?.errors?.['required'] && InfoGroup.get('mobile_number')?.touched" 
+                class="error">
+                mobile number is required
+            </small>
+            <small 
+                *ngIf="(InfoGroup.get('mobile_number')?.errors?.['pattern'] || InfoGroup.get('mobile_number')?.errors?.['maxlength'] || InfoGroup.get('mobile_number')?.errors?.['minlength']) && InfoGroup.get('mobile_number')?.touched" 
+                class="error">
+                phone number must be at least 10 numbers
+            </small>
+        </div>
+
+        <div class="info-box">
+            <label for="difficulty_level" [ngClass]="isErrors('difficulty_level')">Difficulty Level</label>
+            <div class="radio-wrapper">
+                <div class="radio">
+                    <input 
+                        type="radio" 
+                        id="easy" 
+                        name="difficulty_level" 
+                        value="easy" 
+                        checked
+                        formControlName="difficulty_level"
+                    />
+                    <label for="easy">Easy</label>
+                </div>
+                <div class="radio">
+                    <input 
+                    type="radio" 
+                        id="medium" 
+                        name="difficulty_level" 
+                        value="medium"
+                        formControlName="difficulty_level"
+                    />
+                    <label for="medium">Medium</label>
+                </div>
+                <div class="radio">
+                    <input 
+                    type="radio" 
+                    id="hard" 
+                    name="difficulty_level" 
+                    value="hard"
+                    formControlName="difficulty_level"
+                    />
+                    <label for="hard">Hard</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <button 
+            class="btn" 
+            (click)="onSubmitInfo()" 
+            [disabled]="InfoGroup.invalid">
+            Start Game
+        </button>
+    </div>
+</div>
+</div>
+
+
+<div 
+    class="btn-wrapper" 
+    *ngIf="!isSubmittedInfo && !isOpenInfo">
+    <div class="game-over" *ngIf="message">
+        <h1 [ngClass]="message === 'Game Over!' ? 'loose' : 'win'">
+            {{message}}
+        </h1>
+        <p>Your Score: {{score}}</p>
+    </div>
+    <button class="btn" (click)="onCloseInfo()">Start Game</button>
+</div>

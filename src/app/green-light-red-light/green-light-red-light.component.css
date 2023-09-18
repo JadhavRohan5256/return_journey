@@ -1,0 +1,371 @@
+
+.score-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin: 1rem 2rem;
+}
+
+.score-dashboard .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.score-dashboard .wrapper h3 {
+    position: relative;
+}
+
+.score-dashboard .wrapper h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width 1s ease-in-out;
+    border-radius: 1.5px;
+}
+
+.score-dashboard .wrapper h3:hover::before {
+    width: 100%;
+    transition: width 1s ease-in-out;
+}
+
+.box-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(121deg);
+    animation: animate 4s infinite linear;
+    cursor: pointer;
+    user-select: none;
+}
+
+.change-color .box .side{
+    background-color: var(--error-color);
+}
+
+.side {
+    width: 300px;
+    height: 300px;
+    background-color: var(--success-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    box-shadow: 0px 0px 1px #fff;
+    
+}
+
+
+#Front {
+    transform: translateZ(150px);
+    transition: transform 0.25s ease-in-out;
+}
+
+#Back {
+    transform: translateZ(-150px);
+    transition: transform 0.25s ease-in-out;
+}
+
+#Left {
+    right: 150px;
+    transform: rotateY(90deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+#Right {
+    left: 150px;
+    transform: rotateY(90deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+#Top {
+    bottom: 150px;
+    transform: rotateX(90deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+#Bottom {
+    top: 150px;
+    transform: rotateX(90deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+
+.click #Front {
+    transform: translateZ(250px) rotateY(360deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+.click #Back {
+    transform: translateZ(-250px) rotateY(360deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+.click #Left {
+    right: 250px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.click #Right {
+    Left: 250px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.click #Top {
+    bottom: 250px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.click #Bottom {
+    top: 250px;
+    transition: transform 0.25s ease-in-out;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(45deg);
+    }
+    
+    100% {
+        transform: rotateX(360deg) rotateY(45deg);
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+
+    25% {
+        transform: rotateX(-45deg) rotateY(45deg);
+    }
+
+    50%{
+        transform: rotateX(45deg) rotateY(45deg);
+    }
+    
+    75% {
+        transform: rotateX(-45deg) rotateY(45deg);
+    }
+
+    100% {
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+}
+
+
+.btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-family: var(--rubik);
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+/* Info Wrapper Csss */
+.cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.05);
+    z-index: 10;
+}
+
+
+.info-wrapper {
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #212121;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+.close-icons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.close-icons p {
+    border-bottom: 2px solid var(--error-color);
+}
+
+.close-icons P:first-child {
+    transform: rotate(45deg);
+}
+
+.close-icons p:last-child {
+    transform: rotate(-45deg);
+}
+
+.info {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 2rem;
+}
+
+/* .info::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 3px;
+    height: calc(100% - 20px);
+    border-radius: 1.5px;
+    background-color: var(--success-color);
+} */
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.info-box label{
+    font-family: var(--rubik);
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+.info-box input {
+    width: 100%;
+    font-family: var(--poppins);
+    height: 2rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 0 0.7rem;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+
+
+.radio-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio {
+    width: 30%;
+    height: 2rem;
+}
+
+.radio label {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 2px #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio input {
+    display: none;
+}
+
+.radio input:checked + label{
+    background-color: var(--success-color);
+    box-shadow: 0px 0px 2px var(--success-color);
+}
+
+.info-box button {
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    font-weight: 300;
+}
+
+.info-box button:disabled {
+    opacity: 0.5;
+}
+
+/* error handling */
+
+label.error,
+.error {
+    color: var(--error-color);
+}
+
+.info-box input.ng-invalid.ng-touched {
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+.error {
+    margin-top: -0.25rem;   
+    font-family: var(--rubik);
+} 
+
+.game-over-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.win,
+.win + p {
+    font-family: var(--rubik);
+    font-weight: 400;
+    color: var(--success-color);
+}
+
+.loose,
+.loose + p {
+    font-family: var(--rubik);
+    font-weight: 400;
+    color: var(--error-color);
+}
