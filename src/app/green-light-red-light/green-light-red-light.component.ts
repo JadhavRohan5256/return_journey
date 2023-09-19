@@ -61,7 +61,7 @@ export class GreenLightRedLightComponent implements OnDestroy{
     }
     
     private displayGameMess(level: number): void {
-        this.score > level ? this.message = "You Win!" : this.message = "Game Over!";
+        this.score >= level ? this.message = "You Win!" : this.message = "Game Over!";
         this.isClicked = false;
         this.isOpenInfo = false;
         this.isSubmittedInfo = false;

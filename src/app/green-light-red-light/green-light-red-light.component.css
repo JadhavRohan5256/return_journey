@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: end;
     margin: 1rem 2rem;
+    user-select: none;
 }
 
 .score-dashboard .wrapper {
@@ -38,6 +39,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     perspective: 1000px;
+    user-select: none;
 }
 
 .box {
